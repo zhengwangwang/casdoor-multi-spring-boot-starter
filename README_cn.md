@@ -3,19 +3,18 @@
 # Casdoor多租户SpringBoot项目启动器
 
 该启动器旨在帮助您轻松集成[Casdoor](https://github.com/casbin/casdoor) 到您的多租户Spring Boot项目.
+
 单租户项目请使用[casdoor-spring-boot-starter](https://github.com/casdoor/casdoor-spring-boot-starter).
 
-# 需要什么
+# 依赖环境
 
 部署Casdoor
-
-[Server Installation](/docs/basic/server-installation).
 
 您可以参考Casdoor [服务安装](https://casdoor.org/zh/docs/basic/server-installation )官方文档了解
 
 成功部署后，您需要确保：
-- Casdoor服务器已成功运行在**http://localhost:8000**。
-- 打开您喜爱的浏览器并访问**http://localhost:8000**，您将看到Casdoor的登录页面。
+- Casdoor服务器已成功运行在`http://localhost:8000`。
+- 打开您喜爱的浏览器并访问`http://localhost:8000`，您将看到Casdoor的登录页面。
 - 输入“admin”和“123”以测试登录功能运行良好。
 
 # 快速开始
@@ -52,7 +51,9 @@ implementation group: 'org.casbin', name: 'casdoor-multi-spring-boot-starter', v
 | applicationName  | 否   | 应用程序名字                                          |
 
 你可以使用默认的配置提供器，默认的配置提供器使用springboot配置文件，需要注意的是每个客户端的organizationName唯一。
+
 您可以使用properties或YAML文件进行初始化，如下所示：
+
 properties示例:
 
 ```properties
@@ -89,6 +90,7 @@ casdoor:
 # 自定义配置提供器
 
 如果客户端配置是动态的，比如配置是存放在数据库中，那么就可以通过自定义配置提供器的方式给ClientManager提供配置
+
 实现`org.casbin.casdoor.client.ConfigProvider`接口，并注入到spring容器中，clientManager会自动使用自定义配置提供器，示例如下：
 
 ```java
@@ -165,6 +167,7 @@ private ClientManager clientManager;
 ```
 
 通过ClientManager获取Service并使用它，如下所示：
+
 ```java
 UserService service = clientManager.getService("built-in", UserService.class);
 List<User> users = service.getUsers();

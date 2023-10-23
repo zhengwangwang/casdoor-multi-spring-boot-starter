@@ -14,8 +14,8 @@ The Casdoor should be deployed.
 You can refer to the Casdoor official documentation for the [Server Installation](https://casdoor.org/docs/basic/server-installation/).
 
 After a successful deployment, you need to ensure:
-- The Casdoor server is successfully running on **http://localhost:8000**.
-- Open your favorite browser and visit **http://localhost:8000**, you will see the login page of Casdoor.
+- The Casdoor server is successfully running on `http://localhost:8000`.
+- Open your favorite browser and visit `http://localhost:8000`, you will see the login page of Casdoor.
 - Input `admin` and `123` to test login functionality is working fine.
 
 # Quickstart
@@ -93,10 +93,11 @@ casdoor:
 
 
 # Custom Config Provider
+
 If the client config is dynamic, such as being stored in a database, then the configuration can be provided to the ClientManager through a custom configuration provider
 
-
 Implement `org.casbin.casdoor.client.ConfigProvider` interface and inject it into the spring container, ClientManager will automatically use a custom configuration provider. Examples are as follows:
+
 ```java
 @Configuration
 public class DemoConfig {
@@ -171,6 +172,7 @@ private ClientManager clientManager;
 ```
 
 Get the Service and use from ClientManager as below：
+
 ```java
 UserService service = clientManager.getService("built-in", UserService.class);
 List<User> users = service.getUsers();
